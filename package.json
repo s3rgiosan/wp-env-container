@@ -1,0 +1,52 @@
+{
+  "name": "wp-env-container",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Run wp-env environments on Apple's container runtime, with an MCP server for the tests environment.",
+  "license": "MIT",
+  "type": "commonjs",
+  "main": "lib/index.js",
+  "bin": {
+    "wp-env-container": "bin/wp-env-container",
+    "wpec": "bin/wp-env-container"
+  },
+  "files": [
+    "bin",
+    "lib",
+    "CHANGELOG.md"
+  ],
+  "engines": {
+    "node": ">=22"
+  },
+  "os": [
+    "darwin"
+  ],
+  "cpu": [
+    "arm64"
+  ],
+  "scripts": {
+    "test": "node --test \"test/unit/*.test.js\"",
+    "test:integration": "WP_ENV_CONTAINER_E2E=1 node --test --test-concurrency=1 \"test/integration/*.test.js\"",
+    "lint": "eslint bin/wp-env-container lib test eslint.config.mjs",
+    "lint:fix": "eslint --fix bin/wp-env-container lib test eslint.config.mjs"
+  },
+  "dependencies": {
+    "@modelcontextprotocol/sdk": "^1.32.1",
+    "@wordpress/env": "^11.17.0",
+    "yargs": "^18.2.0",
+    "zod": "^4.6.7"
+  },
+  "devDependencies": {
+    "@wordpress/eslint-plugin": "^27.1.0",
+    "eslint": "^9.39.5",
+    "globals": "^17.13.0",
+    "prettier": "npm:wp-prettier@^3.9.6"
+  },
+  "overrides": {
+    "simple-git": "^4.0.2",
+    "js-yaml": {
+      "argparse": "^2.0.1"
+    },
+    "qs": "^6.16.1"
+  }
+}
